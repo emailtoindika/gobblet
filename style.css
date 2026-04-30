@@ -83,10 +83,9 @@ body {
     list-style: none;
     display: flex;
     gap: 20px;
-    ;
     padding: 0;
     margin: 0;
-    position: absolute;
+    /* position: absolute; */
     left: 50%;
 }
 
@@ -553,6 +552,14 @@ main>p {
 }
 
 @media (max-width : 1100px) {
+    body{
+        overflow-y: scroll;
+    }
+    .menu{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
     .column1-sm {
         width: 100%;
     }
@@ -566,7 +573,6 @@ main>p {
     }
 
     .card {
-        background-color: #62748E;
         border: 1px solid #bdc3c7;
         border-radius: 8px;
         padding: 10px;
