@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Feedback</title>
+</head>
+
+<body class="p-unset">
+    <nav class="nav">
+        <div class="left">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./img/logo.png" alt="Gobblet Logo" class="logo" />
+                </a>
+            </div>
+            <main class="tagline">The advanced Tic Tac Toe game</main>
+        </div>
+
+        <ul class="menu">
+            <li class="mt-2"><a href="index.html">Home</a></li>
+            <li class="mt-2"><a href="sign-in.html">Sign in</a></li>
+            <li class="mt-2"><a href="register.html">Registration</a></li>
+            <li class="mt-2"><a href="feedback.html">Feedbacks</a></li>
+            <li class="mt-2"><a href="about.html">About Me</a></li>
+            <li>
+                <span class="user-name">
+                    <img src="./img/user.png" alt="user " class="user-icon" />
+                    Anonymous
+                </span>
+            </li>
+        </ul>
+    </nav>
+    <div class="column1 body m-2">
+        <div class="card">
+            <header class="card-header">
+                <h1>Feedback</h1>
+            </header>
+            <div class="card-body">
+                <main>
+                    <p class="text-center">We value your feedback! </p>
+                    <p class="text-left">Please take a moment to share your thoughts and suggestions about our
+                        Gobblet game.</p>
+                </main>
+                <form id="feedbackForm">
+                    <div class="field">
+                        <div class="field-background">
+                            <input type="text" id="username" name="username" required autocomplete="name" placeholder="Name">
+                            <label for="username">Name</label>
+                        </div>
+                        <div id="username-error"></div>
+                    </div>
+                    <div class="field">
+                        <div class="field-background">
+                            <input type="email" id="email" name="email" required autocomplete="email"
+                                placeholder="Email Address">
+                            <label for="email">Email Address</label>
+                        </div>
+                        <div id="email-error"></div>
+                    </div>
+                    <div class="field-background mb-5">
+                        <div class="rating">
+                            <input type="radio" name="rating" id="rating-5" aria-valuetext="5">
+                            <label for="rating-5"></label>
+                            <input type="radio" name="rating" id="rating-4" aria-valuetext="4">
+                            <label for="rating-4"></label>
+                            <input type="radio" name="rating" id="rating-3" aria-valuetext="3">
+                            <label for="rating-3"></label>
+                            <input type="radio" name="rating" id="rating-2" aria-valuetext="2">
+                            <label for="rating-2"></label>
+                            <input type="radio" name="rating" id="rating-1" aria-valuetext="1">
+                            <label for="rating-1"></label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="field-background">
+                            <textarea id="comments" name="comments" required autocomplete="off" placeholder="Comments"
+                                rows="6"></textarea>
+                            <label for="comments">Comments</label>
+                        </div>
+                        <div id="comments-error"></div>
+                    </div>
+                    <div class="field-background">
+                        <button id="feedbackButton" type="button" class="signin">
+                            <span>Submit Feedback</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./js/feedback.js"></script>
+</body>
+
+</html>

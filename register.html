@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Account Register</title>
+</head>
+
+<body class="body">
+    <div class="login-container">
+        <div class="card">
+            <header class="card-header">
+                <h1>Account Register</h1>
+            </header>
+            <div class="card-body">
+                <main>
+                    <p class="text-center">
+                        Create your account by filling in the information below.
+                    </p>
+                </main>
+                <form id="registerForm">
+                    <div class="field">
+                        <div class="field-background">
+                            <input type="text" id="username" name="username" required autocomplete="off"
+                                placeholder="User Name" >
+                            <label for="username">User Name</label>
+                        </div>
+                        <div id="confirm-username-error"></div>
+                    </div>
+                    <div class="field">
+                        <div class="field-background">
+                            <input type="email" id="email" name="email" required autocomplete="off"
+                                placeholder="Email Address">
+                            <label for="email">Email Address</label>
+                        </div>
+                        <div id="confirm-email-error"></div>
+                    </div>
+                    <div class="field">
+                        <div class="field-background">
+                            <input type="password" id="password" name="password" required
+                                autocomplete="off" placeholder="Password">
+                            <label for="password">Password</label>
+                        </div>
+                        <div id="password-error"></div>
+                    </div>
+                    <div class="field">
+                        <div class="field-background">
+                            <input type="password" id="confirm-password" name="confirm-password" required
+                                autocomplete="off" placeholder="Confirm Password">
+                            <label for="confirm-password">Confirm Password</label>
+                        </div>
+                        <div id="confirm-password-error"></div>
+                    </div>
+                    <span class="pass_requirements">
+                        Password must be at least 8 characters long and include a mix of uppercase letters,
+                        lowercase letters, numbers, and special characters.
+                    </span>
+                    <div class="field-background">
+                        <button id="registerButton" type="submit" class="signin">
+                            <span>Register</span>
+                        </button>
+                    </div>
+                    <div class="field text-center pt-3">
+                        <span>Already have an account?</span>
+                        <a href="sign-in.html" class="link">Sign In</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./js/register.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="./js/send-email.js"></script>
+</body>
+
+</html>

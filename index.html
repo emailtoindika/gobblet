@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body class="p-unset">
+    <nav class="nav">
+        <div class="left">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./img/logo.png" alt="Gobblet Logo" class="logo" />
+                </a>
+            </div>
+            <main class="tagline">The advanced Tic Tac Toe game</main>
+        </div>
+
+        <ul class="menu">
+            <li class="mt-2"><a href="index.html">Home</a></li>
+            <li class="mt-2"><a href="sign-in.html">Sign in</a></li>
+            <li class="mt-2"><a href="register.html">Registration</a></li>
+            <li class="mt-2"><a href="feedback.html">Feedbacks</a></li>
+            <li class="mt-2"><a href="about.html">About Me</a></li>
+            <li>
+                <span class="user-name">
+                    <img src="./img/user.png" alt="user " class="user-icon" />
+                    <span id="loggedUser">Anonymous</span>
+                </span>
+            </li>
+        </ul>
+    </nav>
+    <div class="row">
+        <div class="column column3 column1-sm">
+            <section class="card p-2 card-height main-card">
+                <header class="card-header m-1">
+                    <h1 class="m-1">Game Information</h1>
+                </header>
+                <div class="separator m-2">
+                    <div class="separator-line"></div>
+                </div>
+                <div class="card-body">
+                    <article>
+                        1. A player wins when they have three cups of the same color arranged vertically, horizontally,
+                        or diagonally. A player can place a big cup over a small cup of any color.
+                    </article>
+                    <div class="m-1">
+                        <img src="./img/info-1.png" alt="A player wins when they have three cups of the same color arranged vertically, horizontally,
+                            or diagonally.
+                            A player can place a big cup over a small cup of any color." class="img-info">
+                    </div>
+                    <article>
+                        2. A player cannot place a cup over another cup of the same size (big over big or small over
+                        small).
+                    </article>
+                    <div class="m-1">
+                        <img src="./img/info-2.png" alt="A player cannot place a cup over another cup of the same size (big over big or small over
+                            small)." />
+                    </div>
+                    <article>
+                        3. New corn can be placed on the board or corn can be moved within the board.
+                    </article>
+                    <div class="m-1">
+                        <img src="./img/info-3.png"
+                            alt="New corn can be placed on the board or corn can be moved within the board."
+                            class="img-info" />
+                    </div>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="column column3 column1-sm">
+            <div class="card p-2 card-height main-card">
+                <header class="card-header m-1">
+                    <h1 class="m-1">Play Game</h1>
+                </header>
+                <div class="separator m-2">
+                    <div class="separator-line"></div>
+                </div>
+                <div class="row">
+                    <div class="column4 d-flex align-end" style="position: relative !important;">
+                        <img id="player1" src="./img/player1.png" alt="Player 1" class="img-player" />
+                    </div>
+                    <div class="column2">
+                        <div class="field">
+                            <div class="field-background text-center m-2">
+                                <span class="time " id="timerValue">00:00:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column4 align-start">
+                        <img id="player2" src="./img/player2.png" alt="Player 2" class="img-player" />
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="column4">
+                            <div id="blue-pieces" class="img-container align-end" disabled>
+                                <div id="blue-small-container">
+                                    <img id="blue-small-1" src="./img/blue.png" alt="Player A" class="img-small blue" draggable="true" aria-valuetext = "x" />
+                                    <img id="blue-small-2" src="./img/blue.png" alt="Player A" class="img-small blue" draggable="true" aria-valuetext = "x" />
+                                    <img id="blue-small-3" src="./img/blue.png" alt="Player A" class="img-small blue" draggable="true" aria-valuetext = "x" />
+                                </div>
+                                <div id="blue-big-container">
+                                    <img id="blue-big-1" src="./img/blue.png" alt="Player A" class="img-big blue" draggable="true" aria-valuetext="X" />
+                                    <img id="blue-big-2" src="./img/blue.png" alt="Player A" class="img-big blue" draggable="true" aria-valuetext="X" />
+                                    <img id="blue-big-3" src="./img/blue.png" alt="Player A" class="img-big blue" draggable="true" aria-valuetext="X" />
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="column2">
+                            <div class="game-container">
+                                <div class="row">
+                                    <div class="game-item"></div>
+                                    <div class="game-item"></div>
+                                    <div class="game-item"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="game-item"></div>
+                                    <div class="game-item"></div>
+                                    <div class="game-item"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="game-item"></div>
+                                    <div class="game-item"></div>
+                                    <div class="game-item"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column4">
+                            <div id="red-pieces" class="img-container align-start">
+                                <div id="red-big-container">
+                                    <img id="red-big-1" src="./img/red.png" alt="Player A" class="img-big red" draggable="true" aria-valuetext="O" />
+                                    <img id="red-big-2" src="./img/red.png" alt="Player A" class="img-big red" draggable="true" aria-valuetext="O" />
+                                    <img id="red-big-3" src="./img/red.png" alt="Player A" class="img-big red" draggable="true" aria-valuetext="O" />
+                                </div>
+                                <div id="red-small-container">
+                                    <img id="red-small-1" src="./img/red.png" alt="Player A" class="img-small red" draggable="true" aria-valuetext = "o" />
+                                    <img id="red-small-2" src="./img/red.png" alt="Player A" class="img-small red" draggable="true" aria-valuetext = "o" />
+                                    <img id="red-small-3" src="./img/red.png" alt="Player A" class="img-small red" draggable="true" aria-valuetext = "o" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-1">
+                    <div class="column4">
+                        <div class="row">
+                            <h5 class="column1 win">Wins</h5>
+                        </div>
+                        <div class="row">
+                            <span id="player1Count" class="win-count bg-blue ">0</span>
+                        </div>
+                    </div>
+                    <div class="column2">
+                        <button id="btnReset" type="button" class="signin bg-red">
+                            <span>Reset</span>
+                        </button>
+                    </div>
+                    <div class="column4">
+                        <div class="row">
+                            <h5 class="column1 win">Wins</h5>
+                        </div>
+                        <div class="row">
+                            <span id="player2Count" class="win-count bg-red">0</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="winingImg-container" class="row m-2 display-none">
+                    <div class="column1 text-center">
+                        <img src="./img/winner.png" alt="Winner" class="img-winner" />
+                    </div>
+                </div>
+                <audio id="winingSound">
+                    <source src="./assets/audio/win.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+        <div class="column column3 column1-sm">
+            <div class="card p-2 card-height main-card">
+                <header class="card-header m-1">
+                    <h1 class="m-1">Game Options</h1>
+                </header>
+                <div class="card-body">
+                    <div class="separator m-2">
+                        <div class="separator-line"></div>
+                        <span class="separator-text">Time Option</span>
+                        <div class="separator-line"></div>
+                    </div>
+                    <div class="field m-2">
+                        <div class="field-background">
+                            <label for="chkTimeOption"> Enable Timer </label>
+                            <input id="chkTimeOption" type="checkbox" value="Enable Timer" checked />
+                        </div>
+                    </div>
+                    <div class="field w-50 m-2">
+                        <div class="field-background">
+                            <input type="number" id="timeValue" name="timeValue" required autocomplete="timeValue"
+                                placeholder="Time Value" value="30">
+                            <label for="timeValue">Time (seconds)</label>
+                        </div>
+                    </div>
+
+                    <div class="field-background w-50 m-2">
+                        <button id="btnSetTime" type="button" class="signin">
+                            <span>Set Time</span>
+                        </button>
+                    </div>
+                    <div class="separator">
+                        <div class="separator-line"></div>
+                        <span class="separator-text">Tournament Option</span>
+                        <div class="separator-line"></div>
+                    </div>
+                    <div class="field m-2">
+                        <div class="field-background">
+                            <label for="chkTournamentOption"> Enable Tournament </label>
+                            <input id="chkTournamentOption" type="checkbox" value="Enable Tournament" checked />
+                        </div>
+                    </div>
+                    <div class="field w-50 m-2">
+                        <div class="field-background">
+                            <input type="number" id="TournamentValue" name="TournamentValue" required
+                                autocomplete="TournamentValue" placeholder="Tournament Value" value="0">
+                            <label for="TournamentValue">No of games</label>
+                        </div>
+                    </div>
+                    <div class="field-background w-50 m-2">
+                        <button id="btnActiveTournament" type="button" class="signin">
+                            <span>Active Tournament</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/gobblet.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Sign In</title>
+</head>
+
+<body class="body">
+    <div class="login-container">
+        <div class="card">
+            <header class="card-header">
+                <h1>Sign In</h1>
+            </header>
+            <div class="card-body">
+                <main>
+                    <p class="text-center">
+                        Welcome back! Please sign in to your account.
+                    </p>
+                </main>
+                <form method="POST" action ="/registration" >
+                    <div id="g_id_onload"
+                        data-client_id="700515817612-eiffo0jrid6lfrlhb2jn2ge85p6jf9i4.apps.googleusercontent.com"
+                        data-callback="handleCredentialResponse">
+                    </div>
+                    <div class="g_id_signin"></div>
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    <div class="separator">
+                        <div class="separator-line"></div>
+                        <span class="separator-text">or Sign in via</span>
+                        <div class="separator-line"></div>
+                    </div>
+                    <div class="field">
+                        <div class="field-background">
+                            <input type="email" id="email" name="email" required autocomplete="off"
+                                placeholder="Email Address">
+                            <label for="email">Email Address</label>
+                        </div>
+                        <div id="confirm-email-error"></div> 
+                    </div>
+                    <div class="field">
+                        <div class="field-background">
+                            <input type="password" id="password" name="password" required
+                                autocomplete="off" placeholder="Password">
+                            <label for="password">Password</label>
+                        </div>
+                        <div id="confirm-password-error"></div> 
+                    </div>
+                    <div class="field-background">
+                        <button id="signInButton" type="button" class="signin">
+                            <span>Sign In</span>
+                        </button>
+                    </div>
+                    <div class="field text-center">
+                        <span>No account?</span>
+                        <a href="register.html" class="link">Create Account</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./js/sign-in.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</body>
+</html>
