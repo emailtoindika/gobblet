@@ -66,6 +66,7 @@ function checkPassword(e){
 }
 
 function handleCredentialResponse(response) {
+    console.log("Encoded JWT ID token: " + response.credential);
     // save user details to session storage
     sessionStorage.setItem("user", JSON.stringify(response.credential));
 
