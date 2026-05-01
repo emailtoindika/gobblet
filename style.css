@@ -554,6 +554,7 @@ main>p {
 @media (max-width : 1100px) {
     body{
         overflow-y: scroll;
+        width: 100% !important;
     }
     .menu{
         position: absolute;
@@ -561,15 +562,15 @@ main>p {
         transform: translateX(-50%);
     }
     .column1-sm {
-        width: 100%;
+        width: 100% !important;
     }
 
     .column2-sm {
-        width: 50%;
+        width: 50% !important;
     }
 
     .column3-sm {
-        width: 33.33%;
+        width: 33.33% !important;
     }
 
     .card {
