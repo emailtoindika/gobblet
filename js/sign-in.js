@@ -1,7 +1,7 @@
 // sign in js
 import { getUserByEmail } from "./db-connector.js";
 
-window.addEventListener("load", ()=>{
+window.addEventListener("DOMContentLoaded", async ()=>{
 
     // add event to email
     let email = document.getElementById("email");

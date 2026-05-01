@@ -1,11 +1,10 @@
+
+// user registration
+
 import { saveUser } from "./db-connector.js";
-import { DOMAIN_URL } from "./common.js";
 
-// user registration 
-console.log("registration page");
-window.addEventListener("load", () => {
-    console.log("Document is loaded...");
-
+// add events 
+window.addEventListener("DOMContentLoaded", () => {
     // add event to user name 
     let userName = document.getElementById("username");
     userName.addEventListener("focusout", (e) => checkUserName(e));
@@ -83,9 +82,12 @@ function matchPassword() {
 async function submitForm(e) {
     e.preventDefault();
     if (matchPassword()) {
+        // retrieve user details from form
         let userName = document.getElementById("username").value;
         let email = document.getElementById("email").value;
         let password = document.getElementById("password").value;
+
+        // create user object
         let user = {
             userName: userName,
             email: email,
@@ -95,6 +97,10 @@ async function submitForm(e) {
 
         // save user details to db
         const userId = await saveUser(user);
+
+        // retrieve domain url
+        const DOMAIN_URL = "https://emailtoindika.github.io/gobblet/";
+
         // send activate account email
         const activationLink = `${DOMAIN_URL}activate.html?userId=${userId}`;
         const activateMessage = `Welcome to our service! Please activate your account using the following link: ${activationLink}`;

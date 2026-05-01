@@ -1,7 +1,8 @@
 // init EmailJS with your public key
-emailjs.init(
-    "klMu4eDAj7AWCAxKg",
-);
+
+// init EmailJS 
+const emailPublicKey = "klMu4eDAj7AWCAxKg";
+emailjs.init(emailPublicKey);
 
 // Function to send email
 async function sendEmail(name, email, message) {
@@ -15,13 +16,11 @@ async function sendEmail(name, email, message) {
                 to_name: name,
                 to_email: email,
                 message: message,
-
             }
         );
-
-        console.log("SUCCESS!", response);
         alert("Email sent!");
     } catch (err) {
         console.error("FAILED...", err);
+        alert("Failed to send email. Please try again later.");
     }
 }

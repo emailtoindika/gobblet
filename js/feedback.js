@@ -1,6 +1,7 @@
 // feedback 
 import { saveFeedback } from './db-connector.js';
 
+// add events
 window.addEventListener('DOMContentLoaded', function(){
     // add event to user name 
     let userName = document.getElementById("username");
@@ -54,6 +55,7 @@ function checkComments(e) {
     divMsg.className = "error-lable";
 }
 
+// validate 
 function validateForm() {
     const name = document.getElementById('username').value;
     const email = document.getElementById('email').value;
@@ -66,6 +68,7 @@ function validateForm() {
     return true;
 }
 
+// handle submit
 async function handleSubmit(event){
     event.preventDefault();
 
@@ -85,7 +88,7 @@ async function handleSubmit(event){
         }
     });
 
-
+    // create feedback object
     const feedback = {
         name: name,
         email: email,
@@ -93,7 +96,6 @@ async function handleSubmit(event){
         rating: ratingValue
     };
 
-    console.log(feedback);
     // save feedback
     const result = await saveFeedback(feedback);
 

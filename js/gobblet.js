@@ -1,24 +1,24 @@
 // gobblet game
+
+// global variables
 let currentMovePiece = null;
 let draggedFromCell = null;
 let hiddenPiece = null;
 let currentPlayer = "X";
 let board = [];
 let winningCount = [0,0];
-
 let isTimerEnabled = false;
 let timerInterval = null;
 let initialSeconds = 0;
 let payerAnimation = null;
-
-
 let isTournamentMode = false;
 let tournamentRounds = 0;
 
+// initialize the game
 resetGame();
 enablePieces("blue") 
 
-// retrive winning count from local storage
+// retrieve winning count from local storage
 const storedWinningCount = localStorage.getItem("winningCount");
 if (storedWinningCount) {
   winningCount = JSON.parse(storedWinningCount);
@@ -36,17 +36,18 @@ document.addEventListener("DOMContentLoaded", () => {
     cell.setAttribute("aria_dataRow", row);
     cell.setAttribute("aria_dataCol", col);
 
+    // add events 
     cell.addEventListener("dragover", (event) => handleDragOver(event));
     cell.addEventListener("drop", (event) => handleDrop(event, row, col));
   });
 
-  // retrive blue pieces
+  // retrieve blue pieces
   const bluePieces = document.querySelectorAll(".blue");
   bluePieces.forEach((piece) => {
     piece.addEventListener("dragstart", (event) => handleDragStart(event));
   });
 
-  // retrive red pieces
+  // retrieve red pieces
   const redPieces = document.querySelectorAll(".red");
   redPieces.forEach((piece) => {
     piece.addEventListener("dragstart", (event) => handleDragStart(event));
@@ -60,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const setTime = document.getElementById("btnSetTime");
   setTime.addEventListener("click", setTimeValue);
 
-  // add event in time enble checkbox
+  // add event in time enable checkbox
   const timeEnableCheckbox = document.getElementById("chkTimeOption");
   timeEnableCheckbox.addEventListener("change", handleTimeEnableChange);
 
@@ -74,9 +75,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+// handle drop event
 function handleDrop(event) {
-  
 
+  // check if drop target is valid
   if (!event.target) {
     initDragDropValues();
     event.preventDefault();
@@ -145,14 +147,12 @@ function handleDrop(event) {
 
     // switch player
     switchPlayer();
-
-    console.log(board);
   }
 }
 
+// verification for move
 function verification(row, col, cell) {
   if (!isPieceExisting(row, col)) {
-    // cell is empty, valid move
     return true;
   }
 
@@ -180,11 +180,12 @@ function verification(row, col, cell) {
   return true;
 }
 
+// handle drag over event
 function handleDragOver(event) {
   event.preventDefault();
-  // currentMovePiece.style.opacity = "0.5";
 }
 
+// handle drag start event
 function handleDragStart(event) {
   currentMovePiece = event.target;
 
@@ -202,13 +203,13 @@ function handleDragStart(event) {
     // check any other piece in the cell, if exist display it
     if (parentCell.children.length > 1) {
       hiddenPiece = parentCell.children[0];
-      
     }
     // assign parent cell, when move piece from board
     draggedFromCell = parentCell;
   }
 }
 
+// check winner
 function checkWinner() {
   // check rows
   for (let i = 0; i < 3; i++) {
@@ -251,6 +252,7 @@ function checkWinner() {
   return null;
 }
 
+// display winner
 function displayWinner(){
   // get winner
   let winner = checkWinner();
@@ -272,13 +274,17 @@ function displayWinner(){
       winningCount[1]++;
     }
 
+    // display winning count and save
     displayWinningCount();
     winningCountSaveToLocalStorage();
 
+    // check tournament is on
     if (isTournamentMode){
+      // decrease tournament rounds
       tournamentRounds--;
     }
 
+    // if tournament is finished or tournament is not on, display winner
     if (tournamentRounds === 0){
 
       if (isTournamentMode){
@@ -310,6 +316,7 @@ function displayWinner(){
   }
 }
 
+// enable players
 function enablePieces(color) {
   // retrive pieces
   const redPieces = document.querySelectorAll(".red");
@@ -340,6 +347,7 @@ function enablePieces(color) {
   animateMovers();
 }
 
+// player image animation
 function animateMovers(){
   // display winning image
   let currentPlayerIcon = currentPlayer === "X" ? 
@@ -361,18 +369,22 @@ function animateMovers(){
   });
 }
 
+// check the piece is existing
 function isPieceExisting(row, col) {
   return board[row][col] !== "";
 }
 
+// retrieve existing piece value 
 function ExistingPieceValue(row, col) {
   return board[row][col];
 }
 
+// retrieve current move piece value
 function CurrentPieceValue() {
   return currentMovePiece.getAttribute("aria-valuetext");
 }
 
+// switch player
 function switchPlayer() {
   resetTimer();
   // enable next player pieces and disable current player pieces
@@ -380,6 +392,7 @@ function switchPlayer() {
   currentPlayer === "X" ? enablePieces("blue") : enablePieces("red");
 }
 
+// check drag and drop in same cell
 function IsSameCell(draggedFromCell, dropTargetCell) {
   try {
 
@@ -402,12 +415,14 @@ function IsSameCell(draggedFromCell, dropTargetCell) {
   
 }
 
+// initialize drop value 
 function initDragDropValues() {
     currentMovePiece = null;
     hiddenPiece = null;
     draggedFromCell = null;
 }
 
+// reset game
 function resetGame(){
   // Reset the game state
   board = [
@@ -459,6 +474,7 @@ function resetGame(){
   }
 }
 
+// display winning player animation
 async function displayWinningPlayer(winner) {
   // display winning image
   let winningPlayer = winner === "X" ? 
@@ -509,6 +525,7 @@ async function displayWinningPlayer(winner) {
 
 };
 
+// display winning count
 function displayWinningCount(){
   const player1Count = document.getElementById("player1Count");
   const player2Count = document.getElementById("player2Count");
@@ -517,6 +534,7 @@ function displayWinningCount(){
   player2Count.textContent = winningCount[1];
 }
 
+// set time value and start timer
 function setTimeValue() {
   // get time value 
   const secondValue = document.getElementById("timeValue");
@@ -529,6 +547,7 @@ function setTimeValue() {
   startTimerIfEnabled();
 }
 
+// start time if enabled
 function startTimerIfEnabled() {
 
   if (!isTimerEnabled) {
@@ -551,6 +570,7 @@ function startTimerIfEnabled() {
       return;
     }
 
+    // decrease seconds
     seconds--;
 
     if (seconds <= 0) {
@@ -563,6 +583,7 @@ function startTimerIfEnabled() {
   }, 1000);
 }
 
+// stop timer
 function stopTimer() {
   clearInterval(timerInterval);
   timerInterval = null;
@@ -571,13 +592,14 @@ function stopTimer() {
   timerDisplay.textContent = "00:00:00";
 }
 
+// reset timer
 function resetTimer(){
   stopTimer();
   startTimerIfEnabled();
 }
 
+// handle time enable change
 function handleTimeEnableChange(event) {
-  // update timer enabled value
   isTimerEnabled = event.target.checked;
 
   if (!isTimerEnabled) {
@@ -585,6 +607,7 @@ function handleTimeEnableChange(event) {
   }
 }
 
+// convert seconds to time format
 function secondInTimeFormat(seconds) {
   const hours = (Math.floor(seconds / 3600)).toString().padStart(2, "0");
   const minutes = Math.floor((seconds % 3600) / 60).toString().padStart(2, "0");
@@ -593,10 +616,12 @@ function secondInTimeFormat(seconds) {
   return `${hours}:${minutes}:${remainingSeconds}`;
 }
 
+// save winning count to local storage
 function winningCountSaveToLocalStorage(){
   localStorage.setItem("winningCount", JSON.stringify(winningCount));
 } 
 
+// active tournament mode
 function tournamentMode() {
   // check the tournament enabled
   const tournamentOption = document.getElementById("chkTournamentOption");
@@ -612,6 +637,7 @@ function tournamentMode() {
   }
 }
 
+// reset the tournament
 function resetTournament(){
   tournamentRounds = 0;
   isTournamentMode = false;

@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore, collection, addDoc, updateDoc, getDoc,getDocs, doc ,query, where} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// configuration 
+// db configuration 
 const firebaseConfig = {
     apiKey: "AIzaSyDHlTHShYeqIvrzFPWueOE718GBp6wSlmo",
     authDomain: "tiktaktoe-a07e7.firebaseapp.com",
@@ -17,19 +17,16 @@ const db = getFirestore(app);
 
 // save user details 
 async function saveUser(user) {
-    // save user to db
     try {
-        console.log("Saving user to db:", user);
         const docRef = await addDoc(collection(db, "users"), user);
-        console.log("Document written with ID: ", docRef.id);
         return docRef.id;
     } catch (error) {
         console.error("Error adding document: ", error);
     }
 }
 
+// retrieve user details by id 
 async function getUserById(userId) {
-    // get user details by id
     try {
         const docRef = doc(db, "users", userId);
         const docSnap = await getDoc(docRef);
@@ -44,19 +41,18 @@ async function getUserById(userId) {
     }
 }
 
+// activate user account
 async function activateUser(userId) {
-    // activate user account
     try {
         const docRef = doc(db, "users", userId);
         await updateDoc(docRef, { isActive: true });
-        console.log("User account activated successfully.");
     } catch (error) {
         console.error("Error activating user account: ", error);
     }
 }
 
+// retrieve user details by email
 async function getUserByEmail(email) {
-    // get user details by email
     try {
         const docRef = query(collection(db, "users"), where("email", "==", email));
         const docSnap = await getDocs(docRef);
@@ -71,8 +67,8 @@ async function getUserByEmail(email) {
     }
 }
 
+// save user feedback
 async function saveFeedback(feedback) {
-    // save feedback to db
     try {
         const docRef = await addDoc(collection(db, "feedback"), feedback);
         return true;

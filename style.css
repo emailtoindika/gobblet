@@ -586,4 +586,9 @@ main>p {
         color: rgb(255 124 124) !important;
         font-size: 0.8rem;
     }
+
+    .about-image {
+        width: 80% !important;
+        height: auto !important;
+    }
 }
