@@ -104,6 +104,14 @@ async function submitForm(e) {
         // send activate account email
         const activationLink = `${DOMAIN_URL}activate.html?userId=${userId}`;
         const activateMessage = `Welcome to our service! Please activate your account using the following link: ${activationLink}`;
-        sendEmail(userName, email, activateMessage);
+        const emailSent = await sendEmail(userName, email, activateMessage);
+
+        if (emailSent) {
+            // clear form inputs
+            document.getElementById("username").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("confirm-password").value = "";
+        }
     }
 }

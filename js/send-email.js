@@ -19,8 +19,10 @@ async function sendEmail(name, email, message) {
             }
         );
         alert("Email sent!");
+        return true;
     } catch (err) {
         console.error("FAILED...", err);
         alert("Failed to send email. Please try again later.");
+        return false;
     }
 }
