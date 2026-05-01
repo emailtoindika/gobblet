@@ -64,6 +64,22 @@
         </div>
     </div>
     <script type="module" src="./js/sign-in.js"></script>
+    <script >
+        function handleCredentialResponse(response) {
+            const token = response.credential;
+
+            if (token){
+                // save user details to session storage
+                sessionStorage.setItem("user", JSON.stringify(token));
+
+                // redirect to home page
+                window.location.href = "index.html";
+            }
+            else {
+                alert("Google Sign-In failed. Please try again.");
+            }
+        }
+    </script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </body>
 </html>

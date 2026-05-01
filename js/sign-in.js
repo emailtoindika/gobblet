@@ -65,11 +65,3 @@ function checkPassword(e){
     }
 }
 
-function handleCredentialResponse(response) {
-    console.log("Encoded JWT ID token: " + response.credential);
-    // save user details to session storage
-    sessionStorage.setItem("user", JSON.stringify(response.credential));
-
-    // redirect to home page
-    window.location.href = "index.html";
-}
